@@ -34,12 +34,19 @@ function handleTransmiterData(message, transmiterId) {
   try {
     const data = JSON.parse(message.toString());
 
+    // Pastikan data float dibulatkan rapi
+    const suhu = parseFloat(data.suhu).toFixed(1);
+    const kelembapan = parseFloat(data.kelembapan).toFixed(1);
+    const co = parseFloat(data.co).toFixed(2);
+    const o3 = parseFloat(data.o3).toFixed(2);
+    const pm10 = parseFloat(data.pm10).toFixed(0);
+
     // Update UI sesuai dengan transmiter
-    document.getElementById(`suhu-${transmiterId}`).textContent = data.suhu + ' °C';
-    document.getElementById(`kelembapan-${transmiterId}`).textContent = data.kelembapan + ' %';
-    document.getElementById(`co-${transmiterId}`).textContent = data.co + ' ppm';
-    document.getElementById(`o3-${transmiterId}`).textContent = data.o3 + ' ppm';
-    document.getElementById(`pm10-${transmiterId}`).textContent = data.pm10 + ' µg/m³';
+    document.getElementById(`suhu-${transmiterId}`).textContent = suhu + ' °C';
+    document.getElementById(`kelembapan-${transmiterId}`).textContent = kelembapan + ' %';
+    document.getElementById(`co-${transmiterId}`).textContent = co + ' ppm';
+    document.getElementById(`o3-${transmiterId}`).textContent = o3 + ' ppm';
+    document.getElementById(`pm10-${transmiterId}`).textContent = pm10 + ' µg/m³';
 
     // Simpan ke log untuk ekspor CSV
     const timestamp = new Date().toLocaleString();
