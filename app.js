@@ -44,8 +44,8 @@ function handleTransmiterData(message, transmiterId) {
     // Update UI sesuai dengan transmiter
     document.getElementById(`suhu-${transmiterId}`).textContent = suhu + ' °C';
     document.getElementById(`kelembapan-${transmiterId}`).textContent = kelembapan + ' %';
-    document.getElementById(`co-${transmiterId}`).textContent = co + ' ppm';
-    document.getElementById(`o3-${transmiterId}`).textContent = o3 + ' ppm';
+    document.getElementById(`co-${transmiterId}`).textContent = co + ' µg/m³';
+    document.getElementById(`o3-${transmiterId}`).textContent = o3 + ' µg/m³';
     document.getElementById(`pm10-${transmiterId}`).textContent = pm10 + ' µg/m³';
 
     // Simpan ke log untuk ekspor CSV
