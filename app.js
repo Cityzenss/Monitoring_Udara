@@ -40,6 +40,7 @@ function handleTransmiterData(message, transmiterId) {
     const co = parseFloat(data.co).toFixed(2);
     const o3 = parseFloat(data.o3).toFixed(2);
     const pm10 = parseFloat(data.pm10).toFixed(0);
+    const ispu = parseFloat(data.ispu).toFixed(0);
 
     // Update UI sesuai dengan transmiter
     document.getElementById(`suhu-${transmiterId}`).textContent = suhu + ' °C';
@@ -131,11 +132,11 @@ client.on("message", function (topic, message) {
   }
 });
 
-function updateAirQualityStatus(statusId, pm10) {
+function updateAirQualityStatus(statusId, ispu) {
     const el = document.getElementById(statusId);
   
     // Jika PM10 tidak valid, tampilkan status kosong
-    if (!el || pm10 === null) {
+    if (!el || ispu === null) {
       el.textContent = "Data tidak valid"; // Tampilkan status yang jelas jika PM10 tidak valid
       el.className = "text-xl font-semibold px-3 py-1 rounded-full bg-gray-200 text-gray-800";
       return;
@@ -147,12 +148,12 @@ function updateAirQualityStatus(statusId, pm10) {
     let textClass = "";
   
     // Tentukan status berdasarkan PM10
-    if (pm10 <= 50) {
+    if (ispu <= 50) {
       status = "Baik";
       emoji = "🌿😊";
       bgClass = "bg-green-200 dark:bg-green-700";
       textClass = "text-green-800 dark:text-white";
-    } else if (pm10 <= 150) {
+    } else if (ispu <= 100) {
       status = "Sedang";
       emoji = "🌾😐";
       bgClass = "bg-yellow-200 dark:bg-yellow-600";
