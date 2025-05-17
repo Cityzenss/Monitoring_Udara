@@ -122,10 +122,10 @@ client.on("message", function (topic, message) {
 
     if (topic === "sensor/udara/1") {
       document.getElementById("pm10_1").textContent = pm10;
-      updateAirQualityStatus("status_1", pm10);
+      updateAirQualityStatus("status_1", ispu);
     } else if (topic === "sensor/udara/2") {
       document.getElementById("pm10_2").textContent = pm10;
-      updateAirQualityStatus("status_2", pm10);
+      updateAirQualityStatus("status_2", ispu);
     }
   } catch (error) {
     console.error("Gagal parsing pesan MQTT:", error);
