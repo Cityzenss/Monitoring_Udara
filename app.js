@@ -118,13 +118,13 @@ client.subscribe("sensor/udara/2");
 client.on("message", function (topic, message) {
   try {
     const payload = JSON.parse(message.toString());
-    const pm10 = parseInt(payload.pm10);
+    const ispu = parseInt(payload.ispu);
 
     if (topic === "sensor/udara/1") {
-      document.getElementById("pm10_1").textContent = pm10;
+      document.getElementById("pm10_1").textContent = ispu;
       updateAirQualityStatus("status_1", ispu);
     } else if (topic === "sensor/udara/2") {
-      document.getElementById("pm10_2").textContent = pm10;
+      document.getElementById("pm10_2").textContent = ispu;
       updateAirQualityStatus("status_2", ispu);
     }
   } catch (error) {
