@@ -112,7 +112,7 @@ function updateClock() {
   // Set jam saat halaman pertama kali dimuat
   updateClock();
   
-  client.subscribe("sensor/udara/1");
+client.subscribe("sensor/udara/1");
 client.subscribe("sensor/udara/2");
 
 client.on("message", function (topic, message) {
@@ -121,11 +121,11 @@ client.on("message", function (topic, message) {
     const ispu = parseInt(payload.ispu);
 
     if (topic === "sensor/udara/1") {
-      document.getElementById("pm10_1").textContent = ispu;
       updateAirQualityStatus("status_1", ispu);
+      document.getElementById("pm10_1").textContent = ispu;
     } else if (topic === "sensor/udara/2") {
-      document.getElementById("pm10_2").textContent = ispu;
       updateAirQualityStatus("status_2", ispu);
+      document.getElementById("pm10_2").textContent = ispu;
     }
   } catch (error) {
     console.error("Gagal parsing pesan MQTT:", error);
